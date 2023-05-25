@@ -9,11 +9,13 @@ How much do we want to coverage:
 - How about eval datasets
 - How about AOA/ablation/other analysis?
 
-[Website] • [Colab] • [Huggingface] • [Paper]
+[Website] • [Model Demo] • [Dataset Demo] • [Paper]
 
 [Ziqiao Ma](https://mars-tin.github.io/)\*, [Jiayi Pan](https://www.jiayipan.me/)\*, [Joyce Chai](https://web.eecs.umich.edu/~chaijy/) (\* denotes equal contribution)
 
 **SLED Lab @ University of Michigan**
+
+![Model](docs/images/model.png)
 
 ## Online Demo
 
