@@ -3,7 +3,7 @@ torchrun \
 --nnodes=1 \
 --nproc_per_node=8 \
 --standalone \
-main.py --dataset_config configs/pretrain_test.json \
+main.py --dataset_config configs/flickr.json \
 --wandb \
 --run_name W2Bert \
 --save_for_aoa \
