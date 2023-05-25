@@ -7,8 +7,8 @@ import torch
 import torch.utils.data
 from transformers import RobertaTokenizerFast
 
-import util.dist as dist
-from util.box_ops import generalized_box_iou
+import utils.dist as dist
+from utils.box_ops import generalized_box_iou
 
 from .coco import ModulatedDetection, make_coco_transforms
 

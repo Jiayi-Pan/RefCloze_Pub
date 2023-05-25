@@ -7,7 +7,7 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 
-from util import box_ops
+from utils import box_ops
 
 
 class PostProcessFlickr(nn.Module):

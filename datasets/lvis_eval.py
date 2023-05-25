@@ -11,7 +11,7 @@ import pycocotools.mask as mask_util
 import torch
 import torch._six
 
-import util.dist as dist
+import utils.dist as dist
 
 from .coco_eval import merge
 from .lvis import LVIS

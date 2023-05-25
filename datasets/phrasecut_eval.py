@@ -3,7 +3,7 @@ import os
 from collections import defaultdict
 from typing import Dict, List
 
-import util.dist as dist
+import utils.dist as dist
 
 from .phrasecut_utils.evaluator import Evaluator
 from .phrasecut_utils.refvg_loader import RefVGLoader

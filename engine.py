@@ -11,15 +11,15 @@ import torch
 import torch.nn
 import torch.optim
 
-import util.dist as dist
+import utils.dist as dist
 from datasets.clevrref import ClevrRefEvaluator
 from datasets.coco_eval import CocoEvaluator
 from datasets.flickr_eval import FlickrEvaluator
 from datasets.phrasecut_eval import PhrasecutEvaluator
 from datasets.refexp import RefExpEvaluator
-from util.metrics import MetricLogger, SmoothedValue
-from util.misc import targets_to
-from util.optim import adjust_learning_rate, update_ema
+from utils.metrics import MetricLogger, SmoothedValue
+from utils.misc import targets_to
+from utils.optim import adjust_learning_rate, update_ema
 import wandb
 from copy import deepcopy
 from math import log10

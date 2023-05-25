@@ -18,8 +18,8 @@ import torch
 import torch.utils
 from torch.utils.data import ConcatDataset, DataLoader, DistributedSampler
 
-import util.dist as dist
-import util.misc as utils
+import utils.dist as dist
+import utils.misc as utils
 from datasets import build_dataset, get_coco_api_from_dataset
 from datasets.clevrref import ClevrRefEvaluator
 from datasets.coco_eval import CocoEvaluator

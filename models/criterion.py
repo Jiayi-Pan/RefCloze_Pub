@@ -3,11 +3,11 @@ import torch.distributed
 import torch.nn.functional as F
 from torch import nn
 
-import util.dist as dist
-from util import box_ops
-from util.metrics import accuracy
-from util.misc import NestedTensor, interpolate
-from util.infonce import InfoNCE
+import utils.dist as dist
+from utils import box_ops
+from utils.metrics import accuracy
+from utils.misc import NestedTensor, interpolate
+from utils.infonce import InfoNCE
 from .segmentation import DETRsegm, dice_loss, sigmoid_focal_loss
 from torch import einsum
 from einops import rearrange

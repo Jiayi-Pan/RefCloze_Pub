@@ -13,11 +13,11 @@ import torch.distributed
 import torch.nn.functional as F
 from torch import nn
 
-import util.dist as dist
+import utils.dist as dist
 from einops import rearrange
-from util import box_ops, mvm
-from util.metrics import accuracy
-from util.misc import NestedTensor, interpolate
+from utils import box_ops, mvm
+from utils.metrics import accuracy
+from utils.misc import NestedTensor, interpolate
 import code
 
 from .backbone import build_backbone
@@ -125,7 +125,7 @@ class MDETR(nn.Module):
                 self.answer_head = nn.Linear(hidden_dim, 1853)
 
 
-    def forward(self, samples: NestedTensor, captions, encode_and_save=True, memory_cache=None, lang_only=False, positive_map=None):
+    def forward(self, samples: NestedTensor, captions, encode_and_save=True, memory_cache=None, lang_only=False, positive_map=None, one_pass=False):
         """The forward expects a NestedTensor, which consists of:
            - samples.tensors: batched images, of shape [batch_size x 3 x H x W]
            - samples.mask: a binary mask of shape [batch_size x H x W], containing 1 on padded pixels, 
@@ -149,7 +149,11 @@ class MDETR(nn.Module):
         # parsing samples into NestedTensor form if not already
         if not isinstance(samples, NestedTensor):
             samples = NestedTensor.from_tensor_list(samples)
-
+        if one_pass:
+            # this is only to create a more intuitive abstraction at inference time, where you only call the model one time 
+            memory_cache = self(samples, captions, encode_and_save=True)
+            outputs = self(samples, captions, encode_and_save=False, memory_cache=memory_cache)
+            return outputs
         if encode_and_save:
             assert memory_cache is None
             assert not self.mvm_loss, "MVM is deprecated"
