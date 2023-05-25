@@ -4,6 +4,11 @@ TODO:
 1. Finish the sections
 2. Rename the model/dataset/project
 
+How much do we want to coverage:
+- Training process
+- How about eval datasets
+- How about AOA/ablation/other analysis?
+
 [Website] • [Colab] • [Huggingface] • [Paper]
 
 [Ziqiao Ma](https://mars-tin.github.io/)\*, [Jiayi Pan](https://www.jiayipan.me/)\*, [Joyce Chai](https://web.eecs.umich.edu/~chaijy/) (\* denotes equal contribution)
@@ -12,13 +17,13 @@ TODO:
 
 ## Online Demo
 
-### W2-Bert
-
-You can play with our model through [HuggingFace Space]() or [Colab]().
-
 ### RefCloze Dataset
 
 Our RefCloze dataset is available on [HuggingFace Dataset](https://huggingface.co/datasets/zma/refcloze) and can be visualized through [HuggingFace Space](https://huggingface.co/spaces/zma/refcloze).
+
+### W2-Bert
+
+You can play with our model through [HuggingFace Space]() or [Colab]().
 
 ## Introduction
 
