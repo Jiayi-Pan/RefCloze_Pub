@@ -65,7 +65,7 @@ CITATION TO BE ADDED
 
 ## Acknowledgement
 
-Our project is built upon [MDETR](https://github.com/ashkamath/mdetr) and [DETR](https://github.com/facebookresearch/detr). We thank the authors for their great work!
+Our project is built upon [MDETR](https://github.com/ashkamath/mdetr), [DETR](https://github.com/facebookresearch/detr) and many others. We thank the authors for their great work!
 
 ## License
 
