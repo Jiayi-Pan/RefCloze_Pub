@@ -1,40 +1,54 @@
-# W2 Bert
+# W2 BERT: World to Words: Language Modeling Down to the Ground
+[Website] • [Colab] • [Huggingface] • [Paper]
 
-``` bash
-pip install wandb prettytable spacy pycocotools einops timm scipy tqdm
+[Ziqiao Ma](https://mars-tin.github.io/)\*, [Jiayi Pan](https://www.jiayipan.me/)\*, [Joyce Chai](https://web.eecs.umich.edu/~chaijy/) (\* equal contribution)
+
+**SLED Lab @ University of Michigan**
+
+
+## Online Demo
+
+## Introduction
+
+## Getting Started
+The easiest way to play with our model is through HuggingFace Space or Colab. 
+
+However, if you are interested in reproducing our project, please follow the instructions below, which will guide you through the installation, pre-training, inference and evaluation stages.
+
+### Installation
+Clone our repository, create a python environment and install and install the required packages.
+
 ```
-## Note
-- /scratch/chaijy_root/chaijy2/jiayipan/ACL/RefCloze/pretrain_data/preprocessed_annotations/final_flickr_separate_GT_train.json is modified from origin
-    - basicially left out < 5% to study continual learning
+# After installing pytorch 
+pip install requirements.txt
+```
 
 
-## ChangeLog 
+### Pre-training
+We provide model weights for our pre-trained model. You can download the weights from [here](https://drive.google.com/drive/folders/1-0Z3Z3Q3Z3Q3Z3Q3Z3Q3Z3Q3Z3Q3Z3Q3?usp=sharing) and put them under the `pretrain_data` folder.
 
-## Terminology
-### MDETR
-- mask: a binary mask of shape [batch_size x H x W], containing True on padded pixels, 
+If you are interested in training the model yourself, please follow the instructions in [Pre-training Instructions](scripts/pretrain/README.md). 
 
-### Sweep
-After some [simple hyper-parameter search](https://wandb.ai/jiayipan/RefCloze/sweeps/tud7cuf5?workspace=user-jiayipan), we found the following hyper-parameters perform the best:
-- lr: 1e-4
-- text_encoder_lr: 1e-5
-- clip_max_norm: 5 
-- num_queries: 50
 
-<!-- TODO check if reducing dim is working -->
---no_vl_mapping_stage_1
+### Inference
 
-### Data
+### Evaluation
 
-- continue
-    - SampledNumX (X = 16, 24, 32) where is 8?
-        - per_class: where we feed in a new class
-        - stream: where we feed in a stream of data in new class
-    - all: deprecated, where we feed in all data without continue streaming
-    - origin
-        - seen/15w.pth / seen/15w_gl_probed.pth: performance for 15w steps model
-        - unseen/15w.pth / unseen/15w_gl_probed.pth performance for 15w steps model
-- AOA
+#### Evaluation Dataset
 
-### AOA
-Scripts to run AOA are in RefCloze/analysis_utils
+#### Evaluation Script
+
+
+
+## Citation
+If you find our project useful, please give it a star and cite as follows :)
+
+```bibtex
+CITATION TO ADD
+```
+
+## Acknowledgement
+Our project is built upon [MDETR](https://github.com/ashkamath/mdetr) and [DETR](https://github.com/facebookresearch/detr). We thank the authors for their great work!
+
+## License
+The project is released under the Apache 2.0 license. Please see the [LICENSE](LICENSE) file for more information.

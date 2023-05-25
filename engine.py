@@ -54,10 +54,6 @@ def train_one_epoch(
 		contrastive_criterion.train()
 	if qa_criterion is not None:
 		qa_criterion.train()
-	# metric_logger = MetricLogger(delimiter="  ")
-	# metric_logger.add_meter("lr", SmoothedValue(window_size=1, fmt="{value:.6f}"))
-	# metric_logger.add_meter("lr_backbone", SmoothedValue(window_size=1, fmt="{value:.6f}"))
-	# metric_logger.add_meter("lr_text_encoder", SmoothedValue(window_size=1, fmt="{value:.6f}"))
 	num_training_steps = int(len(data_loader) * args.epochs)
 	for i, batch_dict in tqdm(enumerate(data_loader)):
 		optimizer.zero_grad(set_to_none=True)

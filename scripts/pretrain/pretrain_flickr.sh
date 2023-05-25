@@ -1,10 +1,10 @@
 TORCHELASTIC_ERROR_FILE=./temp_file
 torchrun \
 --nnodes=1 \
---nproc_per_node=1 \
+--nproc_per_node=8 \
 --standalone \
 main.py --dataset_config configs/pretrain_test.json \
---run_name MaskDETR_ACL_V2 \
+--run_name W2Bert \
 --wandb \
 --lr 0.0001 \
 --text_encoder_lr 0.00001 \
