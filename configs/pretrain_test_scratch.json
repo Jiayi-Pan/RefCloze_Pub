@@ -1,0 +1,15 @@
+{
+    "combine_datasets": [
+        "flickr"
+    ],
+    "combine_datasets_val": ["flickr"],
+    "coco_path": "/scratch/chaijy_root/chaijy2/jiayipan/datasets/mscoco-2014/",
+    "vg_img_path": "",
+    "flickr_img_path": "/scratch/chaijy_root/chaijy2/jiayipan/datasets/flickr30k/flickr30k-images/",
+    "flickr_ann_path": "/scratch/chaijy_root/chaijy2/jiayipan/datasets/mdetr-preprocessed/OpenSource/",
+    "flickr_dataset_path": "/scratch/chaijy_root/chaijy2/jiayipan/datasets/flickr30k/Sentences",
+    "refexp_ann_path": "/scratch/chaijy_root/chaijy2/jiayipan/datasets/mdetr-preprocessed/OpenSource/",
+    "gqa_ann_path": "/scratch/chaijy_root/chaijy2/jiayipan/datasets/mdetr-preprocessed/OpenSource/",
+    "refexp_dataset_name": "all",
+    "GT_type": "separate"
+}
