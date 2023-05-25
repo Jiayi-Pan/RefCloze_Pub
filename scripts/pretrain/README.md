@@ -21,3 +21,6 @@ The `pretrain_flickr.sh` script contains the exact command we used to pre-train 
 ```bash
 bash scripts/pretrain/pretrain_w2bert.sh
 ```
+
+Note:
+- For analysis purpose, we also saved a series of checkpoints during the pre-training process. If you don't want to save the checkpoints, you can remove the `--save_for_aoa` flag from the script.

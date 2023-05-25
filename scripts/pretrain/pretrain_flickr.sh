@@ -4,8 +4,9 @@ torchrun \
 --nproc_per_node=8 \
 --standalone \
 main.py --dataset_config configs/pretrain_test.json \
---run_name W2Bert \
 --wandb \
+--run_name W2Bert \
+--save_for_aoa \
 --lr 0.0001 \
 --text_encoder_lr 0.00001 \
 --clip_max_norm 5 \
