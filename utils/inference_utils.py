@@ -1,14 +1,9 @@
 import torch
-from PIL import Image
-import requests
 import torchvision.transforms as T
 import matplotlib.pyplot as plt
 from collections import defaultdict
-import torch.nn.functional as F
 import numpy as np
-
-from matplotlib import patches,  lines
-from matplotlib.patches import Polygon
+from torchvision.ops import nms
 
 img_transform = T.Compose([
     T.Resize(800),
@@ -28,29 +23,67 @@ def rescale_bboxes(out_bbox, size):
     b = b * torch.tensor([img_w, img_h, img_w, img_h], dtype=torch.float32)
     return b
 
-def post_processor(outputs):
-    # keep only predictions with 0.7+ confidence
-    probs = 1 - outputs['pred_logits'].softmax(-1)[0, :, -1].cpu()
-    keep = (probs > 0.7).cpu()
 
-    # convert boxes from [0; 1] to image scales
-    bboxes_scaled = rescale_bboxes(outputs['pred_boxes'].cpu()[0, keep], im.size)
+def non_max_suppression(processed_outputs):
+    new_bboxes = []
+    token_ids_to_bboxs = defaultdict(list)
 
-    # Extract the text spans predicted by each box
-    positive_tokens = (outputs["pred_logits"].cpu()[0, keep].softmax(-1) > 0.1).nonzero().tolist()
-    predicted_spans = defaultdict(str)
+    # we only do nms for bboxs within the exact same region
+    for bbox in processed_outputs['bboxes']:
+        token_ids_str = str(bbox['label']['token_idxs'])
+        token_ids_to_bboxs[token_ids_str].append(bbox)
+
+    for token_ids_str, this_bboxes in token_ids_to_bboxs.items():
+        bboxes = [bbox['bbox'] for bbox in this_bboxes]
+        scores = [bbox['conf'] for bbox in this_bboxes]
+        keep = nms(torch.tensor(bboxes), torch.tensor(scores), 0.5)
+        new_bboxes.extend([this_bboxes[i] for i in keep])
+    processed_outputs['bboxes'] = new_bboxes
+    return processed_outputs
+
+def post_processor(outputs, img, tokenizer, confidence=0.7):
+    ret = {}
+
+    denoised_token_ids = outputs['mlm_logits'].argmax(-1)[0]
+    ret['cap'] = tokenizer.decode(denoised_token_ids)
+
+    probas = 1 - outputs['pred_logits'].float().softmax(-1)[0, :, -1].cpu()
+    keep = (probas > confidence).cpu()
+
+    bboxes = rescale_bboxes(outputs['pred_boxes'].float()[0, keep].cpu(), img.size)
+    scores = probas[keep]
+
+    positive_tokens = (outputs["pred_logits"].float()[0, keep].softmax(-1).cpu() > 0.1).nonzero().tolist()
+    predicted_spans = defaultdict(lambda: {"text": "", "token_idxs": []})
     for tok in positive_tokens:
-      item, pos = tok
-      if pos < 255:
-          # print()
-          span = memory_cache["tokenized"].token_to_chars(0, pos)
-          predicted_spans [item] += " " + caption[span.start:span.end]
+        item, pos = tok
+        if pos >= 255:
+            continue
+        predicted_spans[item]['text'] += " " + tokenizer.decode([denoised_token_ids[pos]]).strip()
+        predicted_spans[item]['token_idxs'].append(pos)
+    labels = [predicted_spans[k] for k in sorted(list(predicted_spans.keys()))]
 
-    labels = [predicted_spans [k] for k in sorted(list(predicted_spans .keys()))]
+    ret['bboxes'] = []
+    for bbox, score, label in zip(bboxes.tolist(), scores.tolist(), labels):
+        ret['bboxes'].append({"bbox": bbox, "conf": score, "label": label})
+    return non_max_suppression(ret)
 
-    # unmasking
-    mask_token_index = (memory_cache["tokenized"]['input_ids'] == model.transformer.tokenizer.mask_token_id)[0].nonzero(as_tuple=True)
-    print(mask_token_index)
-    predicted_token_id = outputs['mlm_logits'][0, mask_token_index].argmax(axis=-1)
-    predicted_token = model.transformer.tokenizer.decode(predicted_token_id)
-    print(predicted_token)
+
+
+def plot_results(img, processed_outputs):
+    COLORS = [[0.000, 0.447, 0.741], [0.850, 0.325, 0.098], [0.929, 0.694, 0.125],[0.494, 0.184, 0.556], [0.466, 0.674, 0.188], [0.301, 0.745, 0.933]]
+    plt.figure(figsize=(16,10))
+    np_image = np.array(img)
+    ax = plt.gca()
+    for bbox in processed_outputs['bboxes']:
+        (xmin, ymin, xmax, ymax) = bbox['bbox']
+        l = bbox['label']['text']
+        s = bbox['conf']
+        c = COLORS[hash(l) % len(COLORS)]
+        ax.add_patch(plt.Rectangle((xmin, ymin), xmax - xmin, ymax - ymin, fill=False, color=c, linewidth=3))
+        text = f'{l}: {s:0.2f}'
+        ax.text(xmin, ymin, text, fontsize=15, bbox=dict(facecolor='white', alpha=0.8))
+
+    plt.imshow(np_image)
+    plt.axis('off')
+    plt.show()

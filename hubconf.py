@@ -1,11 +1,11 @@
 import torch
 from models import build_model
 from transformers import RobertaTokenizerFast
-from utils.inference_utils import img_transform, post_processor
+from utils.inference_utils import img_transform, post_processor, plot_results
 
 dependencies = ["torch", "torchvision", "transformers"]
 
-def base_model():
+def flickr_base_model():
     """
     Our base model initialized from ResNet 50 and RoBERTa-base, pre-trained on Flickr-30k entities.
     """
@@ -13,7 +13,8 @@ def base_model():
         url="https://github.com/Jiayi-Pan/temp/releases/download/Model/plain_model.pth",
         map_location="cpu",
         check_hash=True)
+    model_checkpoint['args'].device = 'cpu'
     tokenizer = RobertaTokenizerFast.from_pretrained(model_checkpoint['args'].text_encoder_type, return_special_tokens_mask=True)
     model = build_model(model_checkpoint['args'])[0]
     model.load_state_dict(model_checkpoint['model'])
-    return model, img_transform, tokenizer, post_processor
+    return model, img_transform, tokenizer, post_processor, plot_results
