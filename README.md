@@ -9,11 +9,14 @@ How much do we want to coverage:
 - How about eval datasets
 - How about AOA/ablation/other analysis?
 
+
+
+**SLED Lab @ University of Michigan**
+
 [Website]() • [Model Demo]() • [Dataset Demo]() • [Paper]()
 
 [Ziqiao Ma](https://mars-tin.github.io/)\*, [Jiayi Pan](https://www.jiayipan.me/)\*, [Joyce Chai](https://web.eecs.umich.edu/~chaijy/) (\* denotes equal contribution)
 
-**SLED Lab @ University of Michigan**
 
 ![Model](docs/images/model.png)
 
@@ -23,7 +26,7 @@ How much do we want to coverage:
 
 Our RefCloze dataset is available on [HuggingFace Dataset](https://huggingface.co/datasets/zma/refcloze) and can be visualized through [HuggingFace Space](https://huggingface.co/spaces/zma/refcloze).
 
-### W2-Bert
+### OctoBert
 
 You can play with our model through [HuggingFace Space]() or [Colab]().
 
@@ -51,13 +54,17 @@ If you are interested in training the model yourself, please follow the instruct
 
 ### Inference
 
+### Training Trajectory
+
+For analysis purpose, we release the training trajectory of our model, which are a series of checkpoints during the training process. 
+
 ### Evaluation Dataset
 
 ### Model Evaluation
 
 ## Citation
 
-If you find our project useful, please give us a star and cite as follows :)
+If you find our work useful, please give us a star and cite as follows :)
 
 ```bibtex
 CITATION TO BE ADDED

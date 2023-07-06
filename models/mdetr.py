@@ -3,8 +3,7 @@
 """
 MDETR model and criterion classes.
 """
-from typing import Dict, Optional
-from spacy import Vocab
+from typing import Optional
 from transformers.models.roberta.modeling_roberta import RobertaLMHead
 from transformers.models.roberta.configuration_roberta import RobertaConfig
 
@@ -13,19 +12,14 @@ import torch.distributed
 import torch.nn.functional as F
 from torch import nn
 
-import utils.dist as dist
 from einops import rearrange
-from utils import box_ops, mvm
-from utils.metrics import accuracy
-from utils.misc import NestedTensor, interpolate
-import code
+from utils.misc import NestedTensor
 
 from .backbone import build_backbone
 from .matcher import build_matcher
-from .postprocessors import build_postprocessors
-from .segmentation import DETRsegm, dice_loss, sigmoid_focal_loss
+from .segmentation import DETRsegm
 from .transformer import build_transformer, ModelStage
-from .criterion import MaskVisionContrastiveCriterion, QACriterionClevr, SetCriterion, ContrastiveCriterion, MaskLanguageCriterion
+from .criterion import MaskVisionContrastiveCriterion, QACriterionClevr, SetCriterion, MaskLanguageCriterion
 
 
 
