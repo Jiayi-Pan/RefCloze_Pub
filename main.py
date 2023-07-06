@@ -27,8 +27,8 @@ from datasets.flickr_eval import FlickrEvaluator
 from datasets.phrasecut_eval import PhrasecutEvaluator
 from datasets.refexp import RefExpEvaluator
 from engine import evaluate, train_one_epoch
-from models import build_model
-from models.postprocessors import build_postprocessors
+from octobert import build_model
+from octobert.postprocessors import build_postprocessors
 from torch.cuda.amp import autocast, GradScaler
 import wandb
 from torch.distributed.elastic.multiprocessing.errors import record

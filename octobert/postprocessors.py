@@ -1,5 +1,5 @@
+# The following file is originally adopted from the original MDETR codebase
 # Copyright (c) Aishwarya Kamath & Nicolas Carion. Licensed under the Apache License 2.0. All Rights Reserved
-"""Postprocessors class to transform MDETR output according to the downstream task"""
 from typing import Dict
 
 import numpy as np

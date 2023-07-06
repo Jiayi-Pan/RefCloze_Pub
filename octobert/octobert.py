@@ -1,8 +1,6 @@
+# The following file is originally adopted from the original MDETR codebase
 # Copyright (c) Aishwarya Kamath & Nicolas Carion. Licensed under the Apache License 2.0. All Rights Reserved
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
-"""
-MDETR model and criterion classes.
-"""
 from typing import Optional
 from transformers.models.roberta.modeling_roberta import RobertaLMHead
 from transformers.models.roberta.configuration_roberta import RobertaConfig

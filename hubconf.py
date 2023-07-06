@@ -1,5 +1,5 @@
 import torch
-from models import build_model
+from octobert import build_model
 from transformers import RobertaTokenizerFast
 from utils.inference_utils import img_transform, post_processor, plot_results
 
