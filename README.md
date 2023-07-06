@@ -1,16 +1,5 @@
 # World to Words: Language Modeling Down to the Ground
 
-TODO: 
-1. Finish the sections
-2. Rename the model/dataset/project
-
-How much do we want to coverage:
-- Training process
-- How about eval datasets
-- How about AOA/ablation/other analysis?
-
-
-
 **SLED Lab @ University of Michigan**
 
 [Website]() • [Model Demo]() • [Dataset Demo]() • [Paper]()
