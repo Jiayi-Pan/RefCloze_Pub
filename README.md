@@ -11,13 +11,14 @@
 
 ## Online Demo
 
+### OctoBert
+
+You can play with our model through [HuggingFace Space]() or [Colab]().
+
 ### RefCloze Dataset
 
 Our RefCloze dataset is available on [HuggingFace Dataset](https://huggingface.co/datasets/zma/refcloze) and can be visualized through [HuggingFace Space](https://huggingface.co/spaces/zma/refcloze).
 
-### OctoBert
-
-You can play with our model through [HuggingFace Space]() or [Colab]().
 
 ## Introduction
 
