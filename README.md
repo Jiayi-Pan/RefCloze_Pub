@@ -2,7 +2,7 @@
 
 **SLED Lab @ University of Michigan**
 
-[Website]() • [Model Demo]() • [Dataset Demo]() • [Paper]()
+[Website]() • [Model Demo]() • [Dataset Demo]() • [Paper](https://arxiv.org/abs/2306.08685)
 
 [Ziqiao Ma](https://mars-tin.github.io/)\*, [Jiayi Pan](https://www.jiayipan.me/)\*, [Joyce Chai](https://web.eecs.umich.edu/~chaijy/) (\* denotes equal contribution)
 
@@ -26,14 +26,17 @@ Our RefCloze dataset is available on [HuggingFace Dataset](https://huggingface.c
 
 The easiest way to play with our model/dataset is through HuggingFace Space or Colab.
 
-However, if you are interested in reproducing our project, please follow the instructions below, which will guide you through the installation, pre-training, inference and evaluation stages.
+If you are interested in reproducing our project, please follow the instructions below, which will guide you through the installation, pre-training, inference and evaluation stages.
 
 ### Installation
 
-Clone our repository and create the python environment, you can install the required packages by
+Clone our repository and create the python environment, you can install the required packages by 
 
 ```bash
-pip install requirements.txt
+# either
+pip install -r requirements.txt
+# or
+pip install tqdm transformers timm wandb prettytable spacy pycocotools einops scipy
 ```
 
 ### Pre-training
