@@ -1,11 +1,10 @@
-# World to Words: Language Modeling Down to the Ground
+# World-to-Words: Grounded Open Vocabulary Acquisition through Fast Mapping in Vision-Language Models
 
 **SLED Lab @ University of Michigan**
 
 [Website]() • [Model Demo]() • [Dataset Demo]() • [Paper](https://arxiv.org/abs/2306.08685)
 
 [Ziqiao Ma](https://mars-tin.github.io/)\*, [Jiayi Pan](https://www.jiayipan.me/)\*, [Joyce Chai](https://web.eecs.umich.edu/~chaijy/) (\* denotes equal contribution)
-
 
 ![Model](docs/images/model.png)
 
@@ -18,7 +17,6 @@ You can play with our model through [HuggingFace Space]() or [Colab]().
 ### RefCloze Dataset
 
 Our RefCloze dataset is available on [HuggingFace Dataset](https://huggingface.co/datasets/zma/refcloze) and can be visualized through [HuggingFace Space](https://huggingface.co/spaces/zma/refcloze).
-
 
 ## Introduction
 
