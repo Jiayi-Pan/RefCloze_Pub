@@ -4,7 +4,7 @@ from octobert import build_model
 from transformers import RobertaTokenizerFast
 from utils.inference_utils import img_transform, post_processor, plot_results
 
-dependencies = ["torch", "torchvision", "transformers"]
+dependencies = ["timm", "tqdm", "transformers", "einops"]
 
 def flickr_base_model():
     """

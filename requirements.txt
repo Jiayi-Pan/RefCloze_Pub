@@ -5,7 +5,6 @@ transformers
 timm
 wandb
 prettytable
-spacy
 pycocotools
 einops
 scipy
