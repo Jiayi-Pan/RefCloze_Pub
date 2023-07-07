@@ -45,7 +45,8 @@ def post_processor(outputs, img, tokenizer, confidence=0.7):
     ret = {}
 
     denoised_token_ids = outputs['mlm_logits'].argmax(-1)[0]
-    ret['cap'] = tokenizer.decode(denoised_token_ids)
+    # the first and last tokens are always <s> and </s>
+    ret['cap'] = tokenizer.decode(denoised_token_ids[1:-1])
 
     probas = 1 - outputs['pred_logits'].float().softmax(-1)[0, :, -1].cpu()
     keep = (probas > confidence).cpu()
