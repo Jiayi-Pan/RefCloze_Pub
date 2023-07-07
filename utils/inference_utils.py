@@ -90,6 +90,7 @@ def plot_results(img, processed_outputs, save_path=None):
         if save_path == "numpy_array":
             import io
             io_buf = io.BytesIO()
+            DPI = 100
             plt.savefig(io_buf, format='raw', dpi=DPI)
             io_buf.seek(0)
             img_arr = np.reshape(np.frombuffer(io_buf.getvalue(), dtype=np.uint8),
