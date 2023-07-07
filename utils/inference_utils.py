@@ -85,6 +85,7 @@ def plot_results(img, processed_outputs, save_path=None):
         ax.text(xmin, ymin, text, fontsize=15, bbox=dict(facecolor='white', alpha=0.8))
 
     plt.imshow(np_image)
+    plt.tight_layout()
     plt.axis('off')
     if save_path is not None:
         if save_path == "numpy_array":

@@ -2,7 +2,7 @@ import torch, PIL
 import gradio as gr
 
 title = "OctoBERT"
-description = """Interactive Demo for OctoBERT. This base model is trained only on Flickr-30k."""
+description = """Interactive Demo for [OctoBERT](https://arxiv.org/abs/2306.08685). This base model is trained only on Flickr-30k."""
 examples =[
 ['https://i.imgur.com/ASXtqVc.jpg','The woman stands outdoors, next to a child in a <mask>.'],
 ['https://i.imgur.com/UspUc7t.jpg', 'A woman in blue shorts and white shirt holds a tennis racket on a blue <mask> court.'],
@@ -12,8 +12,8 @@ examples =[
 ['https://i.imgur.com/dFeN6bs.jpg', 'A black dog stands on a <mask>, green fields behind him.'],
 ]
 device = "cuda" if torch.cuda.is_available() else "cpu"
-model, img_transform, tokenizer, post_processor, plot_results = torch.hub.load('Jiayi-Pan/RefCloze_Pub', 'flickr_base_model')
-# model, img_transform, tokenizer, post_processor, plot_results = torch.hub.load('.', 'flickr_base_model', source='local')
+# model, img_transform, tokenizer, post_processor, plot_results = torch.hub.load('Jiayi-Pan/RefCloze_Pub', 'flickr_base_model')
+model, img_transform, tokenizer, post_processor, plot_results = torch.hub.load('.', 'flickr_base_model', source='local')
 model = model.to(device)
 
 def plot_inference(img, caption):
