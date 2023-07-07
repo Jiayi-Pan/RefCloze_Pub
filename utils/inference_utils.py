@@ -70,7 +70,7 @@ def post_processor(outputs, img, tokenizer, confidence=0.7):
 
 
 
-def plot_results(img, processed_outputs):
+def plot_results(img, processed_outputs, save_path=None):
     COLORS = [[0.000, 0.447, 0.741], [0.850, 0.325, 0.098], [0.929, 0.694, 0.125],[0.494, 0.184, 0.556], [0.466, 0.674, 0.188], [0.301, 0.745, 0.933]]
     plt.figure(figsize=(16,10))
     np_image = np.array(img)
@@ -86,4 +86,21 @@ def plot_results(img, processed_outputs):
 
     plt.imshow(np_image)
     plt.axis('off')
-    plt.show()
+    if save_path is not None:
+        if save_path == "numpy_array":
+            import io
+            io_buf = io.BytesIO()
+            plt.savefig(io_buf, format='raw', dpi=DPI)
+            io_buf.seek(0)
+            img_arr = np.reshape(np.frombuffer(io_buf.getvalue(), dtype=np.uint8),
+                                newshape=(int(fig.bbox.bounds[3]), int(fig.bbox.bounds[2]), -1))
+            io_buf.close()
+            plt.close()
+            return img_arr
+        else:
+            plt.savefig(save_path)
+            plt.close()
+        
+    else:
+        plt.show()
+        plt.close()

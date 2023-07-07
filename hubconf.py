@@ -1,4 +1,5 @@
 import torch
+torch.hub._validate_not_a_forked_repo=lambda a,b,c: True
 from octobert import build_model
 from transformers import RobertaTokenizerFast
 from utils.inference_utils import img_transform, post_processor, plot_results
@@ -10,7 +11,7 @@ def flickr_base_model():
     Our base model initialized from ResNet 50 and RoBERTa-base, pre-trained on Flickr-30k entities.
     """
     model_checkpoint = torch.hub.load_state_dict_from_url(
-        url="https://github.com/Jiayi-Pan/temp/releases/download/Model/plain_model.pth",
+        url="https://huggingface.co/Jiayi-Pan/OctoBERT-flickr/resolve/main/plain_model.pth",
         map_location="cpu",
         check_hash=True)
     model_checkpoint['args'].device = 'cpu'
