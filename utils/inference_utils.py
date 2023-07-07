@@ -57,7 +57,8 @@ def post_processor(outputs, img, tokenizer, confidence=0.7):
     predicted_spans = defaultdict(lambda: {"text": "", "token_idxs": []})
     for tok in positive_tokens:
         item, pos = tok
-        if pos >= 255:
+        if pos >= 255 or pos in [0, len(denoised_token_ids) - 1]:
+            # the first and last tokens are always <s> and </s>
             continue
         predicted_spans[item]['text'] += " " + tokenizer.decode([denoised_token_ids[pos]]).strip()
         predicted_spans[item]['token_idxs'].append(pos)
