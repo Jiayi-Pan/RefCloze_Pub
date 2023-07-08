@@ -2,7 +2,7 @@
 
 **SLED Lab @ University of Michigan**
 
-[Website]() • [Model Demo]() • [Dataset Demo]() • [Paper](https://arxiv.org/abs/2306.08685)
+[Model Demo](https://huggingface.co/spaces/sled-umich/OctoBERT-flickr-demo) • [Dataset]() • [Paper](https://arxiv.org/abs/2306.08685)
 
 [Ziqiao Ma](https://mars-tin.github.io/)\*, [Jiayi Pan](https://www.jiayipan.me/)\*, [Joyce Chai](https://web.eecs.umich.edu/~chaijy/) (\* denotes equal contribution)
 
@@ -16,7 +16,7 @@ You can play with our model through [HuggingFace Space]() or [Colab]().
 
 ### RefCloze Dataset
 
-Our RefCloze dataset is available on [HuggingFace Dataset](https://huggingface.co/datasets/zma/refcloze) and can be visualized through [HuggingFace Space](https://huggingface.co/spaces/zma/refcloze).
+Our RefCloze dataset is available on [HuggingFace Dataset](https://huggingface.co/datasets/zma/refcloze).
 
 ## Introduction
 
@@ -33,25 +33,30 @@ Clone our repository and create the python environment, you can install the requ
 ```bash
 # either
 pip install -r requirements.txt
-# or
+# or after you install pytorch
 pip install tqdm transformers timm wandb prettytable spacy pycocotools einops scipy
 ```
 
 ### Pre-training
 
-We provide model weights for our pre-trained model. You can download the weights from [here](https://drive.google.com/drive/folders/1-0Z3Z3Q3Z3Q3Z3Q3Z3Q3Z3Q3Z3Q3Z3Q3?usp=sharing) and put them under the `pretrain_data` folder.
+We release the pre-trained model. You can run the model simply by
+
+```python
+import torch
+model, img_transform, tokenizer, post_processor, plot_results = torch.hub.load(".", 'flickr_base_model', source="local")
+```
+or access the weights [here](https://huggingface.co/sled-umich/OctoBERT-flickr/blob/main/plain_model.pth).
+
+Please follow the instructions in [demo.ipynb](demo.ipynb) to play with our model.
 
 If you are interested in training the model yourself, please follow the instructions in [Pre-training Instructions](scripts/pretrain/README.md).
 
-### Inference
 
 ### Training Trajectory
 
 For analysis purpose, we release the training trajectory of our model, which are a series of checkpoints during the training process. 
 
 ### Evaluation Dataset
-
-### Model Evaluation
 
 ## Citation
 
