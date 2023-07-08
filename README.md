@@ -2,7 +2,7 @@
 
 **SLED Lab @ University of Michigan**
 
-[Model Demo](https://huggingface.co/spaces/sled-umich/OctoBERT-flickr-demo) • [Dataset]() • [Paper](https://arxiv.org/abs/2306.08685)
+[Model Demo](https://huggingface.co/spaces/sled-umich/OctoBERT-flickr-demo) • [Dataset](https://huggingface.co/datasets/sled-umich/GOVA-flickr) • [Paper](https://arxiv.org/abs/2306.08685)
 
 [Ziqiao Ma](https://mars-tin.github.io/)\*, [Jiayi Pan](https://www.jiayipan.me/)\*, [Joyce Chai](https://web.eecs.umich.edu/~chaijy/) (\* denotes equal contribution)
 
@@ -50,7 +50,7 @@ For analysis purpose, we will release the training trajectory of our model, whic
 
 ### Evaluation
 
-We will release the evaluation code soon.
+The GOVA dataset is available on [HuggingFace Dataset](https://huggingface.co/datasets/sled-umich/GOVA-flickr). We will release instructions for evaluation soon.
 
 ## Citation
 
