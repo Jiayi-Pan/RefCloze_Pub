@@ -1,4 +1,4 @@
-# World-to-Words: Grounded Open Vocabulary Acquisition through Fast Mapping in Vision-Language Models
+# World-to-Words: Grounded Open Vocabulary Acquisition through Fast Mapping in Vision-Language Models (ACL 2023)
 
 **SLED Lab @ University of Michigan**
 
