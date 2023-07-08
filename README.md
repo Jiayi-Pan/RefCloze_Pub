@@ -34,7 +34,7 @@ We release the pre-trained model. You can run the model simply by
 
 ```python
 import torch
-model, img_transform, tokenizer, post_processor, plot_results = torch.hub.load(".", 'flickr_base_model', source="local")
+model, img_transform, tokenizer, post_processor, plot_results = torch.hub.load('Jiayi-Pan/RefCloze_Pub', 'flickr_base_model')
 ```
 or access the weights [here](https://huggingface.co/sled-umich/OctoBERT-flickr/blob/main/plain_model.pth).
 
@@ -47,6 +47,10 @@ If you are interested in training the model yourself, please follow the instruct
 ### Training Trajectory
 
 For analysis purpose, we will release the training trajectory of our model, which are a series of checkpoints during the training process. 
+
+### Evaluation
+
+We will release the evaluation code soon.
 
 ## Citation
 

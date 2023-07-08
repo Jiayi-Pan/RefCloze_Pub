@@ -11,7 +11,7 @@ def flickr_base_model():
     Our base model initialized from ResNet 50 and RoBERTa-base, pre-trained on Flickr-30k entities.
     """
     model_checkpoint = torch.hub.load_state_dict_from_url(
-        url="https://huggingface.co/sled-umich/OctoBERT-flickr/resolve/main/plain_model.pth"
+        url="https://huggingface.co/sled-umich/OctoBERT-flickr/resolve/main/plain_model.pth",
         map_location="cpu",
         check_hash=True)
     model_checkpoint['args'].device = 'cpu'
