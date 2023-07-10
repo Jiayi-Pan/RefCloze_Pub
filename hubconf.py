@@ -19,3 +19,17 @@ def flickr_base_model():
     model = build_model(model_checkpoint['args'])[0]
     model.load_state_dict(model_checkpoint['model'])
     return model, img_transform, tokenizer, post_processor, plot_results
+
+def mix_model():
+    """
+    Our base model initialized from ResNet 50 and RoBERTa-base, pre-trained on Flickr-30k entities and further trained on a mixed dataset of Flickr-30k entities, Visual Genome and RefCOCO.
+    """
+    model_checkpoint = torch.hub.load_state_dict_from_url(
+        url="https://huggingface.co/sled-umich/OctoBERT-mixed/resolve/main/plain_model_mix.pth",
+        map_location="cpu",
+        check_hash=True)
+    model_checkpoint['args'].device = 'cpu'
+    tokenizer = RobertaTokenizerFast.from_pretrained(model_checkpoint['args'].text_encoder_type, return_special_tokens_mask=True)
+    model = build_model(model_checkpoint['args'])[0]
+    model.load_state_dict(model_checkpoint['model'])
+    return model, img_transform, tokenizer, post_processor, plot_results
