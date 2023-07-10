@@ -2,7 +2,7 @@
 
 **SLED Lab @ University of Michigan**
 
-[Model Demo](https://huggingface.co/spaces/sled-umich/OctoBERT-flickr-demo) • [Dataset](https://huggingface.co/datasets/sled-umich/GOVA-flickr) • [Paper](https://arxiv.org/abs/2306.08685)
+[Model Demo](https://huggingface.co/spaces/sled-umich/OctoBERT) • [Dataset](https://huggingface.co/datasets/sled-umich/GOVA-flickr) • [Paper](https://arxiv.org/abs/2306.08685)
 
 [Ziqiao Ma](https://mars-tin.github.io/)\*, [Jiayi Pan](https://www.jiayipan.me/)\*, [Joyce Chai](https://web.eecs.umich.edu/~chaijy/) (\* denotes equal contribution)
 
@@ -10,10 +10,10 @@
 
 ## Getting Started
 
-You can play with Object-oriented BERT (OctoBERT) through [HuggingFace Space](https://huggingface.co/spaces/sled-umich/OctoBERT-flickr-demo) or [Colab](https://colab.research.google.com/drive/1kF-sKoTeXYrNY5bqKGGVcbzqCzOKOjGw#scrollTo=0HxfK6WKe_2P).
+You can play with Object-oriented BERT (OctoBERT) through [HuggingFace Space](https://huggingface.co/spaces/sled-umich/OctoBERT) or [Colab](https://colab.research.google.com/drive/1kF-sKoTeXYrNY5bqKGGVcbzqCzOKOjGw#scrollTo=0HxfK6WKe_2P).
 
 
-Our Grounded Open Vocabulary Acquisition (GOVA) dataset is available on [HuggingFace Dataset](https://huggingface.co/datasets/zma/refcloze).
+Our Grounded Open Vocabulary Acquisition (GOVA) dataset is available on [HuggingFace Dataset](https://huggingface.co/datasets/sled-umich/GOVA-flickr).
 
 If you are interested in reproducing our project, please follow the instructions below, which will guide you through the installation, pre-training, inference and evaluation stages.
 
